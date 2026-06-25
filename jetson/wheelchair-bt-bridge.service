@@ -1,0 +1,16 @@
+[Unit]
+Description=Wheelchair ROS2 Bluetooth bridge
+After=bluetooth.service network-online.target
+Wants=bluetooth.service network-online.target
+
+[Service]
+Type=simple
+User=unicon
+WorkingDirectory=/home/unicon/JetsonBtMonitor/jetson
+Environment=WHEELCHAIR_RFCOMM_CHANNEL=1
+ExecStart=/bin/bash -lc 'source /opt/ros/humble/setup.bash && exec python3 ros2_bt_bridge.py'
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="surface_background">#F4F7FB</color>
+    <color name="card_background">#FFFFFFFF</color>
+    <color name="control_stroke">#D4E2EF</color>
+    <color name="input_background">#F8FBFF</color>
+    <color name="log_background">#EAF0F7</color>
+    <color name="progress_track">#E3ECF5</color>
+    <color name="text_primary">#182230</color>
+    <color name="text_secondary">#667085</color>
+    <color name="text_tertiary">#98A2B3</color>
+    <color name="app_bar_background">#FFFFFFFF</color>
+    <color name="header_background">#0B4F83</color>
+    <color name="header_subtitle">#C7E3F7</color>
+    <color name="brand_blue">#0175C2</color>
+    <color name="brand_blue_dark">#01568F</color>
+    <color name="preset_active_background">#E8F4FC</color>
+    <color name="preset_default_background">#F5FAFF</color>
+    <color name="brand_green">#12805C</color>
+    <color name="camera_status_background">#101828</color>
+    <color name="metric_speed_background">#0175C2</color>
+    <color name="metric_speed_muted">#D2EBFA</color>
+    <color name="metric_speed_track">#4CA3D8</color>
+    <color name="status_waiting_bg">#E7EEF7</color>
+    <color name="status_waiting_text">#40546B</color>
+    <color name="status_connecting_bg">#FFF2CC</color>
+    <color name="status_connecting_text">#7A4E00</color>
+    <color name="status_connected_bg">#DDF7EA</color>
+    <color name="status_connected_text">#0D6848</color>
+    <color name="status_disconnected_text">#C2410C</color>
+    <color name="status_reconnecting_bg">#FFE7DD</color>
+    <color name="status_reconnecting_text">#8A310F</color>
+    <color name="danger_red">#D92D20</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/surface_background"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/app_bar_background"
+        android:elevation="1dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/backButton"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="56dp"
+            android:layout_height="40dp"
+            android:minWidth="0dp"
+            android:text="@string/back"
+            android:textSize="18sp"
+            app:cornerRadius="8dp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/camera_title"
+            android:textColor="@color/text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/reloadCameraButton"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="96dp"
+            android:layout_height="40dp"
+            android:minWidth="0dp"
+            android:text="@string/reload"
+            app:cornerRadius="8dp" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/cameraProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:indeterminate="true" />
+
+    <TextView
+        android:id="@+id/cameraFrameCountText"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@color/camera_status_background"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="@string/camera_frame_status_empty"
+        android:textColor="@color/white"
+        android:textSize="13sp" />
+
+    <WebView
+        android:id="@+id/cameraWebView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/black" />
+</LinearLayout>
