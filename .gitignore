@@ -1,23 +1,38 @@
-*.iml
-.gradle
+# Gradle
+.gradle/
+build/
+
+# Local configuration
+local.properties
 /local.properties
-__pycache__/
-*.py[cod]
+.env
+
+# Logs and generated packages
 *.log
 *.apk
 *.aab
+output-metadata.json
+
+# Android Studio and IntelliJ
+*.iml
+.idea/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Keystore files
 *.jks
 *.keystore
-.env
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+
+# Google services
+google-services.json
+
+# Android profiling
+*.hprof
+
+# Python
+__pycache__/
+*.py[cod]
+
+# OS files
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
