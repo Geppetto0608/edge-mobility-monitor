@@ -1,0 +1,17 @@
+[Unit]
+Description=Wheelchair ROS2 Wi-Fi API bridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=unicon
+WorkingDirectory=/home/unicon/JetsonBtMonitor/jetson
+Environment=WHEELCHAIR_API_HOST=0.0.0.0
+Environment=WHEELCHAIR_API_PORT=8081
+ExecStart=/bin/bash -lc 'source /opt/ros/humble/setup.bash && exec python3 ros2_wifi_bridge.py'
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

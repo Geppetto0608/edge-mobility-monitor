@@ -108,25 +108,42 @@ http://192.168.50.1:8080/stream
 
 ## 부팅 후 자동 실행
 
-Jetson에서 브릿지를 항상 켜두려면 systemd 서비스로 등록합니다.
+Jetson에서 Wi-Fi API 브릿지와 카메라 서버를 항상 켜두려면 systemd 서비스로 등록합니다.
+
+서비스 파일의 `User`와 `WorkingDirectory`가 실제 Jetson 계정/경로와 맞는지 먼저 확인합니다.
+현재 예시는 아래 경로 기준입니다.
+
+```text
+User=unicon
+WorkingDirectory=/home/unicon/JetsonBtMonitor/jetson
+```
+
+다른 경로에 clone했다면 `wheelchair-wifi-bridge.service`, `wheelchair-camera-stream.service` 안의 값을 수정합니다.
+
+서비스 등록:
 
 ```bash
-sudo cp wheelchair-bt-bridge.service /etc/systemd/system/
+sudo cp wheelchair-wifi-bridge.service /etc/systemd/system/
+sudo cp wheelchair-camera-stream.service /etc/systemd/system/
 sudo systemctl daemon-reload
-sudo systemctl enable --now wheelchair-bt-bridge.service
+sudo systemctl enable --now wheelchair-wifi-bridge.service
+sudo systemctl enable --now wheelchair-camera-stream.service
 ```
 
 상태와 로그 확인:
 
 ```bash
-systemctl status wheelchair-bt-bridge.service
-journalctl -u wheelchair-bt-bridge.service -f
+systemctl status wheelchair-wifi-bridge.service
+systemctl status wheelchair-camera-stream.service
+journalctl -u wheelchair-wifi-bridge.service -f
+journalctl -u wheelchair-camera-stream.service -f
 ```
 
 서비스를 끄려면:
 
 ```bash
-sudo systemctl disable --now wheelchair-bt-bridge.service
+sudo systemctl disable --now wheelchair-wifi-bridge.service
+sudo systemctl disable --now wheelchair-camera-stream.service
 ```
 
 ## 브릿지가 구독하는 토픽
