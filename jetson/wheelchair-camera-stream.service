@@ -1,0 +1,18 @@
+[Unit]
+Description=Wheelchair camera MJPEG stream
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=unicon
+WorkingDirectory=/home/unicon/JetsonBtMonitor/jetson
+Environment=WHEELCHAIR_CAMERA_HOST=0.0.0.0
+Environment=WHEELCHAIR_CAMERA_PORT=8080
+Environment=WHEELCHAIR_CAMERA_SOURCE=0
+ExecStart=/usr/bin/python3 camera_mjpeg_server.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
