@@ -285,25 +285,4 @@ WHEELCHAIR_CAMERA_SOURCE=csi python3 jetson/camera_mjpeg_server.py
 
 프리셋 이름인 `Base 모드`, `쾌속 모드`, `저속 모드`는 카드 강조로 표시되고, Current Mode에는 실제 주행 모드인 `수동 모드`, `어시스트 모드`, `자율주행 모드`가 표시됩니다.
 
-## Git 관리
 
-처음 clone:
-
-```bash
-git clone https://github.com/Geppetto0608/edge-mobility-monitor.git
-```
-
-변경사항 저장:
-
-```bash
-git status
-git add .
-git commit -m "변경 내용 요약"
-git push
-```
-
-다른 사람이 올린 변경사항 받기:
-
-```bash
-git pull
-```
