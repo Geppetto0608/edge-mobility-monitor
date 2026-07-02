@@ -1,3 +1,13 @@
+## License
+
+This repository is not open source.
+
+Copyright (c) 2026 Park Hyeongjun. All rights reserved.
+
+Commercial use, redistribution, sublicensing, modification, and derivative works are prohibited without prior written permission from the copyright holder.
+
+
+
 # Edge Mobility Monitor
 
 Jetson AGX Orin과 Android 앱을 Wi-Fi로 연결해서 자율주행 휠체어의 상태를 확인하고 제어하는 모니터링 앱입니다.
