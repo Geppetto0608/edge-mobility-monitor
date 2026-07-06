@@ -16,6 +16,7 @@ output-metadata.json
 # Android Studio and IntelliJ
 *.iml
 .idea/
+.kotlin/
 captures/
 .externalNativeBuild/
 .cxx/
