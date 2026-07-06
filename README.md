@@ -14,6 +14,25 @@ Jetson AGX Orin과 Android 앱을 Wi-Fi로 연결해서 자율주행 휠체어�
 
 앱은 Jetson의 ROS2 토픽을 직접 읽지 않습니다. Jetson에서 실행되는 Python 브릿지가 ROS2 토픽을 HTTP JSON API로 바꾸고, Android 앱은 그 API를 polling해서 속도, 배터리, 주행 모드, 프리셋, 카메라 영상을 표시합니다.
 
+## Architecture
+
+```text
+Android app
+  ├─ polls GET /api/health and /api/telemetry
+  ├─ posts mode, step, stop, user, and preset commands
+  └─ opens MJPEG camera stream
+
+Jetson AGX Orin
+  ├─ ros2_wifi_bridge.py
+  │   ├─ subscribes ROS2 telemetry topics
+  │   ├─ publishes ROS2 command topics
+  │   └─ serves HTTP JSON API on port 8081
+  └─ camera_mjpeg_server.py
+      └─ serves camera stream on port 8080
+```
+
+This repository contains the software interface layer. Real robot safety validation, field testing, latency measurements, and deployment logs are TBD.
+
 ## 주요 기능
 
 - Android 네이티브 앱
@@ -28,6 +47,42 @@ Jetson AGX Orin과 Android 앱을 Wi-Fi로 연결해서 자율주행 휠체어�
 - 기본 프리셋 자동 적용
 - 앱 백그라운드 상태 알림 서비스
 - Jetson 핫스팟 운용 준비
+
+## Validation Status
+
+Reproducible local checks:
+
+```bash
+./gradlew :app:assembleDebug
+./gradlew :app:testDebugUnitTest
+./gradlew :app:lintDebug
+```
+
+Jetson-side checks:
+
+```bash
+source /opt/ros/humble/setup.bash
+python3 jetson/ros2_wifi_bridge.py
+python3 jetson/camera_mjpeg_server.py
+curl http://127.0.0.1:8081/api/health
+curl http://127.0.0.1:8081/api/telemetry
+curl http://127.0.0.1:8080/health
+```
+
+Portfolio evidence still to add:
+
+- Android dashboard screenshot: TBD
+- Camera streaming screenshot or GIF: TBD
+- ROS2 topic echo screenshot: TBD
+- Example API response JSON: TBD
+- Jetson deployment video or log: TBD
+
+## Security and Configuration Notes
+
+- `local.properties`, Gradle build outputs, APK/AAB files, keystores, and IDE metadata should not be committed.
+- The default Wi-Fi AP password in the setup script is for development convenience. Change `WHEELCHAIR_WIFI_PASSWORD` before any real deployment.
+- `AppConfig.java` currently stores development IP addresses directly. For a polished release, move these values to build config, resources, or a runtime settings screen.
+- systemd service files include example Jetson account/path values and must be adjusted for the actual target machine.
 
 ## 프로젝트 구조
 
@@ -248,6 +303,8 @@ SSID: WheelchairJetson
 Password: CHANGE_ME_8plus
 Jetson IP: 192.168.50.1
 ```
+
+운용 전에는 `WHEELCHAIR_WIFI_PASSWORD` 환경 변수로 기본 비밀번호를 바꾸는 것을 권장합니다.
 
 ## 자주 생기는 문제
 
