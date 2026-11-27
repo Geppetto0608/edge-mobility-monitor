@@ -55,7 +55,7 @@ chmod +x setup_wifi_ap.sh
 
 ```text
 SSID: WheelchairJetson
-Password: CHANGE_ME_8plus
+Password: (WHEELCHAIR_WIFI_PASSWORD 환경 변수로 직접 지정)
 Jetson IP: 192.168.50.1
 ```
 

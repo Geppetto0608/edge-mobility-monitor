@@ -9,12 +9,17 @@ set -euo pipefail
 CONNECTION_NAME="${WHEELCHAIR_WIFI_CONNECTION:-wheelchair-jetson-ap}"
 WIFI_IFACE="${WHEELCHAIR_WIFI_IFACE:-}"
 WIFI_SSID="${WHEELCHAIR_WIFI_SSID:-WheelchairJetson}"
-WIFI_PASSWORD="${WHEELCHAIR_WIFI_PASSWORD:-CHANGE_ME_8plus}"
+WIFI_PASSWORD="${WHEELCHAIR_WIFI_PASSWORD:-}"
 WIFI_IP_CIDR="${WHEELCHAIR_WIFI_IP_CIDR:-192.168.50.1/24}"
 WIFI_CHANNEL="${WHEELCHAIR_WIFI_CHANNEL:-6}"
 
 if [[ "${EUID}" -ne 0 ]]; then
     exec sudo -E bash "$0" "$@"
+fi
+
+if [[ -z "${WIFI_PASSWORD}" ]]; then
+    echo "Set WHEELCHAIR_WIFI_PASSWORD (8-63 characters) before running, e.g.: WHEELCHAIR_WIFI_PASSWORD='your-pass' ./setup_wifi_ap.sh" >&2
+    exit 1
 fi
 
 if [[ "${#WIFI_PASSWORD}" -lt 8 || "${#WIFI_PASSWORD}" -gt 63 ]]; then

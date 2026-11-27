@@ -300,11 +300,17 @@ chmod +x setup_wifi_ap.sh
 
 ```text
 SSID: WheelchairJetson
-Password: CHANGE_ME_8plus
+Password: (WHEELCHAIR_WIFI_PASSWORD 환경 변수로 직접 지정)
 Jetson IP: 192.168.50.1
 ```
 
-운용 전에는 `WHEELCHAIR_WIFI_PASSWORD` 환경 변수로 기본 비밀번호를 바꾸는 것을 권장합니다.
+비밀번호 기본값은 없습니다. 실행할 때 `WHEELCHAIR_WIFI_PASSWORD` 환경 변수로 8~63자 비밀번호를 지정해야 합니다.
+
+```bash
+WHEELCHAIR_WIFI_PASSWORD='your-password' ./setup_wifi_ap.sh
+```
+
+앱의 긴급/문의 전화번호는 `AppConfig.java`의 `SUPPORT_PHONE`과 `strings.xml`의 `contact_support`에서 운용 환경에 맞게 설정합니다 (저장소에는 `010-0000-0000` 자리표시자만 있습니다).
 
 ## 자주 생기는 문제
 
